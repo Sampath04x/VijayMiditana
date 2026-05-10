@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Vijay Miditana | Associate Professor of Chemical Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --deep: #112240;
+    --teal: #0a8a7c;
+    --teal-light: #0fb8a4;
+    --gold: #c9a84c;
+    --cream: #f5f0e8;
+    --text: #ccd6f6;
+    --text-dim: #8892b0;
+    --card: #1a2d45;
+    --border: rgba(10,138,124,0.25);
+    --glow: rgba(10,138,124,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 999;
+    background: rgba(13,27,42,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 64px;
+  }
+  .nav-brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem; color: var(--teal-light); letter-spacing: 2px;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-dim);
+    font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal-light); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 0 6vw; position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(10,138,124,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.06) 0%, transparent 50%),
+      linear-gradient(135deg, var(--navy) 0%, #0a1628 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--teal) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--teal) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; color: var(--teal-light);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-tag::before { content: '// '; }
+  .hero-initials {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: white;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 40px rgba(10,138,124,0.4);
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700; line-height: 1.1;
+    color: var(--cream);
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+  h1 span { color: var(--teal-light); }
+  .hero-role {
+    font-size: 1.15rem; color: var(--text-dim);
+    margin: 1rem 0 0.5rem;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+  .hero-inst {
+    font-size: 0.95rem; color: var(--gold);
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease 0.35s both;
+  }
+  .hero-stats {
+    display: flex; gap: 3rem; margin: 2.5rem 0;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700; color: var(--teal-light);
+    display: block;
+  }
+  .stat-lbl { font-size: 0.78rem; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+  .hero-btns {
+    display: flex; gap: 1rem;
+    animation: fadeUp 0.8s ease 0.5s both;
+  }
+  .btn-primary {
+    padding: 0.8rem 2rem; border-radius: 4px;
+    background: var(--teal); color: white;
+    text-decoration: none; font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 1px; transition: all 0.2s;
+    border: 1px solid var(--teal);
+  }
+  .btn-primary:hover { background: var(--teal-light); border-color: var(--teal-light); transform: translateY(-2px); }
+  .btn-outline {
+    padding: 0.8rem 2rem; border-radius: 4px;
+    border: 1px solid var(--teal); color: var(--teal-light);
+    text-decoration: none; font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 1px; transition: all 0.2s;
+  }
+  .btn-outline:hover { background: rgba(10,138,124,0.1); transform: translateY(-2px); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 7rem 6vw; }
+  section:nth-child(even) { background: rgba(17,34,64,0.5); }
+
+  .sec-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; color: var(--teal);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .sec-label::before { content: '0' counter(sec) ' · '; counter-increment: sec; }
+  body { counter-reset: sec; }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--cream);
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--cream); }
+
+  /* ─── ABOUT ─── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-bio p { color: var(--text-dim); margin-bottom: 1rem; }
+  .about-bio strong { color: var(--text); }
+  .edu-list { list-style: none; }
+  .edu-list li {
+    padding: 1rem 0; border-bottom: 1px solid var(--border);
+    display: flex; gap: 1rem;
+  }
+  .edu-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; color: var(--gold);
+    min-width: 48px; padding-top: 0.15rem;
+  }
+  .edu-deg { font-size: 0.9rem; color: var(--text); font-weight: 600; }
+  .edu-place { font-size: 0.82rem; color: var(--text-dim); }
+
+  /* quick profile */
+  .quick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .quick-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.2rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .quick-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+  .quick-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .quick-val { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--teal-light); }
+  .quick-key { font-size: 0.78rem; color: var(--text-dim); }
+
+  /* ─── RESEARCH ─── */
+  .research-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+  .res-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.8rem;
+    transition: all 0.25s;
+  }
+  .res-card:hover { border-color: var(--teal); box-shadow: 0 8px 30px var(--glow); transform: translateY(-4px); }
+  .res-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .res-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .res-card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; padding: 0.3rem 0.8rem;
+    border: 1px solid var(--teal); border-radius: 20px; color: var(--teal-light);
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── PUBLICATIONS ─── */
+  .pub-filters { display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .pub-filter-btn {
+    padding: 0.45rem 1.2rem; border-radius: 20px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-dim); font-size: 0.82rem; cursor: pointer;
+    transition: all 0.2s; font-family: inherit;
+  }
+  .pub-filter-btn.active, .pub-filter-btn:hover {
+    background: var(--teal); border-color: var(--teal); color: white;
+  }
+  .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+  .pub-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .pub-item:hover { border-color: var(--teal); }
+  .pub-badge {
+    display: inline-block; font-size: 0.68rem; font-family: 'JetBrains Mono', monospace;
+    padding: 0.2rem 0.7rem; border-radius: 4px; margin-bottom: 0.75rem;
+    letter-spacing: 1px;
+  }
+  .badge-scopus { background: rgba(10,138,124,0.2); color: var(--teal-light); border: 1px solid var(--teal); }
+  .badge-intl { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.4); }
+  .badge-natl { background: rgba(100,130,200,0.15); color: #8ab4f8; border: 1px solid rgba(100,130,200,0.3); }
+  .badge-springer { background: rgba(180,100,100,0.15); color: #f4a5a5; border: 1px solid rgba(180,100,100,0.3); }
+  .pub-title { color: var(--cream); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .pub-authors { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 0.4rem; }
+  .pub-journal { font-size: 0.82rem; color: var(--gold); font-style: italic; }
+  .pub-item[data-cat] { transition: all 0.3s; }
+  .pub-item.hidden { display: none; }
+
+  /* ─── EXPERIENCE TIMELINE ─── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--teal), transparent);
+  }
+  .tl-item { position: relative; margin-bottom: 3rem; }
+  .tl-dot {
+    position: absolute; left: -2.4rem; top: 0.3rem;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--teal); border: 2px solid var(--navy);
+    box-shadow: 0 0 12px var(--teal);
+  }
+  .tl-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; color: var(--gold); margin-bottom: 0.4rem;
+  }
+  .tl-role { color: var(--cream); font-size: 1rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .tl-org { color: var(--teal-light); font-size: 0.88rem; margin-bottom: 0.5rem; }
+  .tl-desc { color: var(--text-dim); font-size: 0.88rem; }
+  .course-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.5rem; }
+  .course-tag {
+    font-size: 0.78rem; padding: 0.35rem 0.9rem;
+    background: rgba(10,138,124,0.1); border: 1px solid var(--border);
+    border-radius: 4px; color: var(--text-dim);
+  }
+
+  /* ─── RESPONSIBILITIES ─── */
+  .resp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 1.5rem; }
+  .resp-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.8rem;
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    transition: all 0.25s;
+  }
+  .resp-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .resp-icon-wrap {
+    min-width: 44px; height: 44px; border-radius: 8px;
+    background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+  }
+  .resp-title { color: var(--cream); font-size: 0.92rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .resp-desc { color: var(--text-dim); font-size: 0.82rem; }
+
+  /* ─── CONFERENCES ─── */
+  .conf-list { display: flex; flex-direction: column; gap: 1rem; }
+  .conf-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.3rem 1.5rem;
+    display: flex; gap: 1.5rem; align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .conf-item:hover { border-color: var(--teal); }
+  .conf-year-badge {
+    min-width: 54px; text-align: center; padding: 0.4rem;
+    background: rgba(10,138,124,0.15); border: 1px solid var(--border);
+    border-radius: 6px; font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem; color: var(--teal-light);
+  }
+  .conf-title { color: var(--cream); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .conf-event { color: var(--text-dim); font-size: 0.82rem; }
+
+  /* ─── CONTACT ─── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 2rem;
+  }
+  .contact-row { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-icon { font-size: 1.3rem; min-width: 30px; }
+  .contact-lbl { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.2rem; }
+  .contact-val { color: var(--cream); font-size: 0.9rem; }
+  .contact-val a { color: var(--teal-light); text-decoration: none; }
+  .contact-val a:hover { text-decoration: underline; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #070f1a; border-top: 1px solid var(--border);
+    text-align: center; padding: 2.5rem;
+    color: var(--text-dim); font-size: 0.82rem;
+  }
+  footer strong { color: var(--teal-light); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { gap: 1.5rem; }
+    #hero { padding: 0 1.5rem; }
+    .quick-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">VM</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#experience">Teaching</a></li>
+    <li><a href="#responsibilities">Responsibilities</a></li>
+    <li><a href="#conferences">Conferences</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Associate Professor · Chemical Engineering</div>
+    <div class="hero-initials">VM</div>
+    <h1>Dr. <span>Vijay</span> Miditana</h1>
+    <p class="hero-role">Associate Professor & Head of Department</p>
+    <p class="hero-inst">Department of Chemical Engineering · JITM, CUTM · Paralakhemundi, Odisha</p>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">30+</span>
+        <span class="stat-lbl">Publications</span>
+      </div>
+      <div>
+        <span class="stat-num">20+</span>
+        <span class="stat-lbl">Conferences</span>
+      </div>
+      <div>
+        <span class="stat-num">2</span>
+        <span class="stat-lbl">PhD Scholars</span>
+      </div>
+      <div>
+        <span class="stat-num">PhD</span>
+        <span class="stat-lbl">Andhra Univ. 2019</span>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#publications" class="btn-outline">View Publications</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label">About &amp; Biography</div>
+  <h2>About Dr. Vijay Miditana</h2>
+  <div class="about-grid">
+    <div class="about-bio fade-in">
+      <p>Dr. Vijay Miditana is an <strong>Associate Professor and Head of the Department of Chemical Engineering</strong> at Jagannath Institute of Technology and Management (JITM), Centurion University of Technology and Management (CUTM), Paralakhemundi, Odisha — a role he has held continuously since July 2010.</p>
+      <p>He earned his <strong>PhD in Chemical Engineering</strong> from Andhra University, Visakhapatnam in 2019, after completing his M.Tech from SUVCE, Tirupati (SVU) in 2007 and B.Tech from GMRIT under JNTU Hyderabad in 2001.</p>
+      <p>His research spans <strong>mass transfer, electrochemical reactors, fluidized beds, nanofluids, bioenergy, and advanced materials</strong>. He has authored over 30 publications in international journals and conference proceedings, including papers indexed in <strong>Scopus and Materials Today: Proceedings</strong>.</p>
+      <p>Beyond research, he has guided two ongoing PhD scholars, served as <strong>Board of Studies (BOS) Chairman</strong> in Chemical &amp; Petro-Chemical Engineering at Centurion University, and organized multiple AICTE-sponsored national-level programs.</p>
+
+      <div class="quick-grid" style="margin-top:2rem;">
+        <div class="quick-card">
+          <div class="quick-icon">🎓</div>
+          <div class="quick-val">20+ yrs</div>
+          <div class="quick-key">Teaching Experience</div>
+        </div>
+        <div class="quick-card">
+          <div class="quick-icon">🔬</div>
+          <div class="quick-val">PhD 2019</div>
+          <div class="quick-key">Andhra University</div>
+        </div>
+        <div class="quick-card">
+          <div class="quick-icon">📄</div>
+          <div class="quick-val">30+</div>
+          <div class="quick-key">Journal Publications</div>
+        </div>
+        <div class="quick-card">
+          <div class="quick-icon">👨‍🎓</div>
+          <div class="quick-val">2 Active</div>
+          <div class="quick-key">PhD Scholars</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <h3 style="margin-bottom:1.5rem; color:var(--cream);">Educational Qualifications</h3>
+      <ul class="edu-list">
+        <li>
+          <span class="edu-year">2019</span>
+          <div>
+            <div class="edu-deg">PhD · Chemical Engineering</div>
+            <div class="edu-place">Andhra University, Visakhapatnam, A.P.</div>
+          </div>
+        </li>
+        <li>
+          <span class="edu-year">2007</span>
+          <div>
+            <div class="edu-deg">M.Tech · Chemical Engineering</div>
+            <div class="edu-place">SUVCE, Tirupati · Sri Venkateswara University</div>
+          </div>
+        </li>
+        <li>
+          <span class="edu-year">2001</span>
+          <div>
+            <div class="edu-deg">B.Tech · Chemical Engineering</div>
+            <div class="edu-place">GMRIT · JNTU Hyderabad, A.P.</div>
+          </div>
+        </li>
+        <li>
+          <span class="edu-year">1996</span>
+          <div>
+            <div class="edu-deg">+2 Science</div>
+            <div class="edu-place">Board of Intermediate Education, A.P.</div>
+          </div>
+        </li>
+        <li>
+          <span class="edu-year">1994</span>
+          <div>
+            <div class="edu-deg">10th Standard</div>
+            <div class="edu-place">Board of Secondary Education, A.P.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="sec-label">Research Areas</div>
+  <h2>Research Interests &amp; Expertise</h2>
+  <div class="research-grid">
+    <div class="res-card fade-in">
+      <div class="res-icon">⚗️</div>
+      <h3>Mass Transfer &amp; Electrochemical Reactors</h3>
+      <p>Wall-to-bulk and wall-to-bed mass transfer in bubble columns, fluidized bed electrochemical reactors, and two-phase flow systems with turbulence promoters.</p>
+    </div>
+    <div class="res-card fade-in">
+      <div class="res-icon">🌊</div>
+      <h3>Fluidized Bed Systems</h3>
+      <p>Three-phase fluidized bed reactors, inverse fluidized beds, gas holdup studies, and coaxially placed structural elements for mass transfer enhancement.</p>
+    </div>
+    <div class="res-card fade-in">
+      <div class="res-icon">🧪</div>
+      <h3>Nanofluids &amp; Hybrid Nanofluids</h3>
+      <p>Synthesis, stability, thermal conductivity, and heat transfer augmentation of Al₂O₃–TiO₂ and other hybrid nanofluid dispersions.</p>
+    </div>
+    <div class="res-card fade-in">
+      <div class="res-icon">🌱</div>
+      <h3>Bioenergy &amp; Biofuels</h3>
+      <p>Biodiesel production from renewable biological sources, bio-oil from pyrolysis of biomass, ethanol fermentation, and characterization of biomass briquettes.</p>
+    </div>
+    <div class="res-card fade-in">
+      <div class="res-icon">🏗️</div>
+      <h3>Advanced Composites &amp; Materials</h3>
+      <p>Glass fiber-epoxy composites with CNT fillers, Al6061/Graphite composites with SiC reinforcement, and plasma sprayed thermal barrier coatings.</p>
+    </div>
+    <div class="res-card fade-in">
+      <div class="res-icon">💡</div>
+      <h3>Reaction Engineering &amp; Kinetics</h3>
+      <p>Kinetics of esterification reactions (propionic acid, butanoic acid with cyclohexanol), catalytic cracking, and process optimization studies.</p>
+    </div>
+    <div class="res-card fade-in">
+      <div class="res-icon">🌍</div>
+      <h3>Environmental Engineering</h3>
+      <p>Fluoride removal from drinking water using nano-magnesium oxide, automobile wash water treatment using natural materials, and wastewater biosorption.</p>
+    </div>
+    <div class="res-card fade-in">
+      <div class="res-icon">🖨️</div>
+      <h3>3D Printing &amp; Digital Manufacturing</h3>
+      <p>Energy consumption prediction in 3D printing using deep learning models, characterization of additive manufacturing processes and sustainability reviews.</p>
+    </div>
+  </div>
+  <div class="tags" style="margin-top:3rem;">
+    <span class="tag">Mass Transfer</span>
+    <span class="tag">Electrochemical Reactors</span>
+    <span class="tag">Nanofluids</span>
+    <span class="tag">Fluidized Beds</span>
+    <span class="tag">Bioenergy</span>
+    <span class="tag">Pyrolysis</span>
+    <span class="tag">Composites</span>
+    <span class="tag">Reaction Kinetics</span>
+    <span class="tag">3D Printing</span>
+    <span class="tag">ANN Modeling</span>
+    <span class="tag">Environmental Remediation</span>
+    <span class="tag">Gas Holdup</span>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="sec-label">Publications</div>
+  <h2>Journal Publications &amp; Conference Papers</h2>
+  <div class="pub-filters">
+    <button class="pub-filter-btn active" onclick="filterPubs('all', this)">All</button>
+    <button class="pub-filter-btn" onclick="filterPubs('scopus', this)">Scopus / SCI</button>
+    <button class="pub-filter-btn" onclick="filterPubs('intl', this)">International Journals</button>
+    <button class="pub-filter-btn" onclick="filterPubs('springer', this)">Springer / ACS</button>
+    <button class="pub-filter-btn" onclick="filterPubs('natl', this)">National Journals</button>
+  </div>
+  <div class="pub-list">
+
+    <div class="pub-item fade-in" data-cat="scopus">
+      <span class="pub-badge badge-scopus">SCOPUS</span>
+      <div class="pub-title">Mass Transfer In An Electrochemical Reactor In The Presence Of A String of Double Cones With Gas-Liquid Flow Systems</div>
+      <div class="pub-authors">M. Vijay, G. V. S. K. Reddy, D. U. S. L. Deepthi and K. V. Ramesh</div>
+      <div class="pub-journal">JP Journal of Heat and Mass Transfer, June 2019 · ISSN: 0973-5763</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="scopus">
+      <span class="pub-badge badge-scopus">SCOPUS</span>
+      <div class="pub-title">Wall-to-bed mass transfer in a three-phase fluidized bed electrochemical reactor with an interval</div>
+      <div class="pub-authors">M. Vijay, G. V. S. K. Reddy, M Kusuma and K. V. Ramesh</div>
+      <div class="pub-journal">JP Journal of Heat and Mass Transfer, August 2019 · ISSN: 0973-5763</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="scopus">
+      <span class="pub-badge badge-scopus">SCOPUS</span>
+      <div class="pub-title">Mass transfer enhancement in a two-phase flow Electrochemical Reactor</div>
+      <div class="pub-authors">M. Vijay, G. V. S. Sarma, D U S L Deepti and K. V. Ramesh</div>
+      <div class="pub-journal">Materials Today: Proceedings, Volume 27, Part 1, 2020, Pages 426–433 · ISSN: 2214-7853</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="scopus">
+      <span class="pub-badge badge-scopus">SCOPUS</span>
+      <div class="pub-title">Electrowinning from dilute solutions at enhanced rates using three-phase flow reactor</div>
+      <div class="pub-authors">G. Sai Kishore, M. Vijay, G.V.S.K. Reddy, K.V. Ramesh</div>
+      <div class="pub-journal">International Journal of Innovative Technology and Exploring Engineering (IJITEE), Vol. 9, No. 4, 2020 · ISSN: 2278-3075</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="scopus">
+      <span class="pub-badge badge-scopus">SCOPUS</span>
+      <div class="pub-title">Optimum Parameters for Production of Ethanol from Synthetic Molasses by Saccharomyces cerevisiae</div>
+      <div class="pub-authors">P. Krishna Reddy, M. Vijay, M. Kusuma, K.V. Ramesh</div>
+      <div class="pub-journal">Materials Today: Proceedings, Volume 46, Issue 1, 2021, Pages 154–156 · ISSN: 2214-7853</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="scopus">
+      <span class="pub-badge badge-scopus">SCOPUS</span>
+      <div class="pub-title">Kinetic studies of esterification of butanoic acid with cyclohexanol</div>
+      <div class="pub-authors">G.V.S. Sarma, G.V. Santhosh Kumar, M. Vijay, K.V. Ramesh</div>
+      <div class="pub-journal">Materials Today: Proceedings, Volume 46, Issue 1, 2021, Pages 737–739</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="springer">
+      <span class="pub-badge badge-springer">ACS / SPRINGER</span>
+      <div class="pub-title">Glass Fiber-Epoxy Composites with Carbon Nanotube Fillers for Enhancing Properties in Structure Modeling Using AI Technique</div>
+      <div class="pub-authors">Lokesh Vaddar, ... Miditana Vijay, et al.</div>
+      <div class="pub-journal">ACS Omega, June 21, 2023 · DOI: 10.1021/acsomega.3c01067</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="springer">
+      <span class="pub-badge badge-springer">SPRINGER</span>
+      <div class="pub-title">Synthesis of Hybrid Nanofluids, Properties, and Its Applications — A Comprehensive Review</div>
+      <div class="pub-authors">Sudhakara Rao Bammidi, Vijay Miditana, and Ravibabu Sajja</div>
+      <div class="pub-journal">Lecture Notes in Mechanical Engineering, Springer Nature · ISBN: 978-981-97-6731-1</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="springer">
+      <span class="pub-badge badge-springer">SPRINGER</span>
+      <div class="pub-title">Experimental Investigations on Dispersion Ratio of Al₂O₃-TiO₂ Over the Properties of Hybrid Nanofluids</div>
+      <div class="pub-authors">Ravi Kiran Mudidana, Vijay Miditana, V. Rambabu</div>
+      <div class="pub-journal">Journal of The Institution of Engineers (India): Series C, Vol. 107, Issue 1, Feb-2026 · DOI: 10.1007/s40032-026-01326-9</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="intl">
+      <span class="pub-badge badge-intl">INTERNATIONAL</span>
+      <div class="pub-title">Wall-to-bulk mass transfer in bubble columns with string of cones</div>
+      <div class="pub-authors">M. Vijay, K V Ramesh</div>
+      <div class="pub-journal">International Journal of Engineering, Science and Mathematics, 2017 · ISSN: 2320-0294</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="intl">
+      <span class="pub-badge badge-intl">INTERNATIONAL</span>
+      <div class="pub-title">Production and characterisation of bio-oil from Gold Mohar (Delonix regia) seed through pyrolysis process</div>
+      <div class="pub-authors">Sarat Chandra Patra, M. Vijay, Achyut K. Panda</div>
+      <div class="pub-journal">International Journal of Ambient Energy, 2016 · ISSN: 0143-0750</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="intl">
+      <span class="pub-badge badge-intl">INTERNATIONAL</span>
+      <div class="pub-title">Efficient Removal of Fluoride Using Sol-Gel Processed Nano Magnesium Oxide</div>
+      <div class="pub-authors">Lakshmi Jayanthi Juturi, ..., Vijay Miditana, et al.</div>
+      <div class="pub-journal">Chem. Methodol. 2023, 7(7) 569–580 · DOI: 10.22034/CHEMM.2023.393347.1671</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="intl">
+      <span class="pub-badge badge-intl">INTERNATIONAL</span>
+      <div class="pub-title">Enhancement of LM26 Aluminum Hybrid Composites Performance Through SiC and Graphite Reinforcements Using Predictive ANN Modeling</div>
+      <div class="pub-authors">M. Vijaya, Sneha H. Dhoria, Vijay Miditana, M. Zubairuddin, et al.</div>
+      <div class="pub-journal">Engineering Reports, 2026, Vol 8, Issue 1 · DOI: 10.1002/eng2.70562</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="intl">
+      <span class="pub-badge badge-intl">INTERNATIONAL</span>
+      <div class="pub-title">Energy Consumption Prediction in 3D Printing Using Enhanced Hybrid Deep Learning Models</div>
+      <div class="pub-authors">M. Jayakrishna, M. Vijay, P. Manoj Kumar and R. Suthan</div>
+      <div class="pub-journal">Journal of Engineering and Technology for Industrial Applications, v.12 n.57, 2026 · DOI: 10.5935/jetia.v12i57.3195</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="intl">
+      <span class="pub-badge badge-intl">INTERNATIONAL</span>
+      <div class="pub-title">An Overview of Extensive Analysis of 3D Printing Applications in the Manufacturing Sector</div>
+      <div class="pub-authors">Makka Jayakrishna; Vijay Miditana; Baseem Khan</div>
+      <div class="pub-journal">Journal of Engineering, Volume 2023, Article ID 7465737 · DOI: 10.1155/2023/7465737</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="natl">
+      <span class="pub-badge badge-natl">NATIONAL</span>
+      <div class="pub-title">Preparation and Characterization Biomass Briquetting</div>
+      <div class="pub-authors">M. Vijay, D Kamalakar</div>
+      <div class="pub-journal">Indian Journal of Natural Sciences, Vol.10 / Issue 60 / June 2020 · ISSN: 0976-0997</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="natl">
+      <span class="pub-badge badge-natl">NATIONAL</span>
+      <div class="pub-title">Re-Utilization of Automobile Wash Water Treatment By Using Natural Materials</div>
+      <div class="pub-authors">Vijay Miditana and Mohan Marumudi</div>
+      <div class="pub-journal">Indian Journal of Natural Sciences, Vol.13 / Issue 72 / June 2022, Pages 42229–42234</div>
+    </div>
+
+    <div class="pub-item fade-in" data-cat="natl">
+      <span class="pub-badge badge-natl">NATIONAL</span>
+      <div class="pub-title">Chemical E-Car</div>
+      <div class="pub-authors">M. Vijay, D. Kamalakar</div>
+      <div class="pub-journal">Journal of Xi'an University of Architecture & Technology, Vol. XII, Issue IV, April 2020 · ISSN: 1006-7930</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-label">Teaching &amp; Industry Experience</div>
+  <h2>Career Timeline</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem;">
+    <div>
+      <h3 style="margin-bottom:2rem; color:var(--teal-light);">Teaching Experience</h3>
+      <div class="timeline">
+        <div class="tl-item fade-in">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Aug 2019 – Present</div>
+          <div class="tl-role">Associate Professor</div>
+          <div class="tl-org">Dept. of Chemical Engineering, JITM, CUTM · Paralakhemundi, Odisha</div>
+          <div class="tl-desc">Leading research and teaching in chemical engineering. Guiding PhD scholars and heading the department.</div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Jul 2010 – Jul 2019</div>
+          <div class="tl-role">Assistant Professor</div>
+          <div class="tl-org">Dept. of Chemical Engineering, JITM, CUTM · Paralakhemundi, Odisha</div>
+          <div class="tl-desc">Taught undergraduate and postgraduate chemical engineering courses. Established research direction in mass transfer.</div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Dec 2008 – Jun 2010</div>
+          <div class="tl-role">Lecturer</div>
+          <div class="tl-org">Dept. of Chemical Engineering, JITM · Paralakhemundi, Odisha</div>
+          <div class="tl-desc">Delivered lectures and practical sessions in core chemical engineering subjects.</div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Dec 2005 – Dec 2008</div>
+          <div class="tl-role">Lecturer (Ad-hoc)</div>
+          <div class="tl-org">Dept. of Chemical Engineering, JNTUCE · Anantapur, A.P.</div>
+          <div class="tl-desc">Taught at JNTU College of Engineering Anantapur on an ad-hoc basis.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:2rem; color:var(--teal-light);">Industrial Experience</h3>
+      <div class="timeline">
+        <div class="tl-item fade-in">
+          <div class="tl-dot" style="background:var(--gold);box-shadow:0 0 12px var(--gold);"></div>
+          <div class="tl-period">~1.5 Years</div>
+          <div class="tl-role">Process Engineer (Maintenance)</div>
+          <div class="tl-org">S.M.S Pharmaceuticals Ltd., Unit-II · Khazipeta, Medak (Dist.), A.P.</div>
+          <div class="tl-desc">Hands-on industrial experience in process engineering and maintenance operations in pharmaceutical manufacturing.</div>
+        </div>
+      </div>
+
+      <h3 style="margin:3rem 0 1.5rem; color:var(--teal-light);">Courses Taught</h3>
+      <div class="course-tags">
+        <span class="course-tag">Chemical Process Calculations</span>
+        <span class="course-tag">Mass Transfer Operations</span>
+        <span class="course-tag">Reaction Engineering</span>
+        <span class="course-tag">Fluid Mechanics</span>
+        <span class="course-tag">Heat Transfer</span>
+        <span class="course-tag">Electrochemical Engineering</span>
+        <span class="course-tag">Process Control</span>
+        <span class="course-tag">Thermodynamics</span>
+        <span class="course-tag">Separation Processes</span>
+        <span class="course-tag">Aspen Plus Simulation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESPONSIBILITIES -->
+<section id="responsibilities">
+  <div class="sec-label">Administrative &amp; Academic Responsibilities</div>
+  <h2>Additional Responsibilities</h2>
+  <div class="resp-grid">
+    <div class="resp-card fade-in">
+      <div class="resp-icon-wrap">🏛️</div>
+      <div>
+        <div class="resp-title">Head of Department</div>
+        <div class="resp-desc">Serving as HOD, Dept. of Chemical Engineering, JITM, CUTM, Paralakhemundi — continuously from July 2010 to present.</div>
+      </div>
+    </div>
+    <div class="resp-card fade-in">
+      <div class="resp-icon-wrap">📋</div>
+      <div>
+        <div class="resp-title">BOS Chairman</div>
+        <div class="resp-desc">Board of Studies Chairman in Chemical &amp; Petro-Chemical Engineering, Centurion University of Technology and Management, Paralakhemundi.</div>
+      </div>
+    </div>
+    <div class="resp-card fade-in">
+      <div class="resp-icon-wrap">🎓</div>
+      <div>
+        <div class="resp-title">AICTE FDP Coordinator</div>
+        <div class="resp-desc">Coordinated an AICTE-sponsored Faculty Development Program held from 6th May to 18th May 2013.</div>
+      </div>
+    </div>
+    <div class="resp-card fade-in">
+      <div class="resp-icon-wrap">💻</div>
+      <div>
+        <div class="resp-title">National Workshop Convenor</div>
+        <div class="resp-desc">Convened National Workshop on Aspen Plus and its Applications, 2nd–6th December 2013.</div>
+      </div>
+    </div>
+    <div class="resp-card fade-in">
+      <div class="resp-icon-wrap">📣</div>
+      <div>
+        <div class="resp-title">Seminar Coordinator</div>
+        <div class="resp-desc">Coordinated Seminar on Chemical Process Calculations and Techno Quiz on 20th January 2012.</div>
+      </div>
+    </div>
+    <div class="resp-card fade-in">
+      <div class="resp-icon-wrap">🔬</div>
+      <div>
+        <div class="resp-title">PhD Supervisor</div>
+        <div class="resp-desc">Presently guiding two PhD scholars — Mr. M. Ravi Kiran and Mr. M. Jaya Krishna — in advanced research in chemical engineering.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFERENCES -->
+<section id="conferences">
+  <div class="sec-label">Conferences &amp; FDPs</div>
+  <h2>Conference Presentations &amp; Development Programs</h2>
+  <div class="conf-list">
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2013</div>
+      <div>
+        <div class="conf-title">Catalytic Cracking of Vegetable Oils — Alternate Route to Liquid Fuels</div>
+        <div class="conf-event">National Conference on Green Engineering &amp; Technology · JITM, Paralakhemundi · March 2013</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2017</div>
+      <div>
+        <div class="conf-title">Wall-to-bulk Mass Transfer in Bubble Columns with String of Cones</div>
+        <div class="conf-event">ICMSEA-2017 · BITS, Visakhapatnam · December 2017</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2018</div>
+      <div>
+        <div class="conf-title">Mass Transfer in an Electrochemical Reactor with String of Double Cones in Gas-Liquid Flow</div>
+        <div class="conf-event">ICMSEA-2018 · BITS, Visakhapatnam · December 2018</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2019</div>
+      <div>
+        <div class="conf-title">Mass Transfer Enhancement in a Two-Phase Flow Electrochemical Reactor</div>
+        <div class="conf-event">ICRAMC-2019 · SRM Institute of Science &amp; Technology, Tamil Nadu · Feb 2019</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2019</div>
+      <div>
+        <div class="conf-title">Enhancement of Mass Transfer Using Coaxially Placed String of Cones in Three-Phase Fluidized Bed Reactor</div>
+        <div class="conf-event">ICMSEA-2019 · Centurion University, Paralakhemundi · December 2019</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2020</div>
+      <div>
+        <div class="conf-title">Optimum Parameters for Production of Ethanol from Synthetic Molasses by Saccharomyces cerevisiae</div>
+        <div class="conf-event">ICMMSE-2020 · CMR Institute of Technology, Hyderabad · December 2020</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2021</div>
+      <div>
+        <div class="conf-title">Gas Holdup in Gas-Liquid Upflow Bubble Column with Inverted Cones as Turbulent Promoter</div>
+        <div class="conf-event">ICMMSE-2021 · CMR Institute of Technology, Hyderabad · September 2021</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2022</div>
+      <div>
+        <div class="conf-title">Holdups for a Solid-Liquid-Gas Fluidized Bed Reactor with Centrally Placed Strand of Cones</div>
+        <div class="conf-event">ICMMSE-2022 · Sri Venkateswara College of Engineering and Technology, Chittoor · Dec 2022</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin:3rem 0 1.5rem; color:var(--cream);">Selected FDPs &amp; Workshops Attended</h3>
+  <div class="conf-list">
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2014</div>
+      <div>
+        <div class="conf-title">AICTE-Sponsored FDP on Pinch Technology (PT 2K14)</div>
+        <div class="conf-event">GMR Institute of Technology, Rajam · 21 April – 3 May 2014</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2020</div>
+      <div>
+        <div class="conf-title">FDP on Advanced Technologies in Chemical Science Research</div>
+        <div class="conf-event">Aditya Institute of Technology and Management, Tekkali · June 2020</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2021</div>
+      <div>
+        <div class="conf-title">Workshop on AI Tools in Chemical Engineering: From Atomic Structure to Neural Architecture</div>
+        <div class="conf-event">MVGR College of Engineering, Vizianagaram · December 2021</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2022</div>
+      <div>
+        <div class="conf-title">International FDP on Sustainable Nanotechnologies (SNT-2022)</div>
+        <div class="conf-event">GMR Institute of Technology &amp; NIT Warangal · October 2022</div>
+      </div>
+    </div>
+    <div class="conf-item fade-in">
+      <div class="conf-year-badge">2024</div>
+      <div>
+        <div class="conf-title">One Week Virtual International Seminar — Global Perspectives on Mechanical Engineering &amp; Technology (GPMET-2024)</div>
+        <div class="conf-event">GIET University, Gunupur, Odisha · Feb 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-label">Contact Information</div>
+  <h2>Get In Touch</h2>
+  <div class="contact-grid">
+    <div class="contact-card fade-in">
+      <h3 style="margin-bottom:1.5rem;">Contact Details</h3>
+      <div class="contact-row">
+        <span class="contact-icon">📧</span>
+        <div>
+          <div class="contact-lbl">Email</div>
+          <div class="contact-val"><a href="mailto:vijay.miditana@gmail.com">vijay.miditana@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">📞</span>
+        <div>
+          <div class="contact-lbl">Phone</div>
+          <div class="contact-val">+91-7978230676 / 9441053630</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">🏛️</span>
+        <div>
+          <div class="contact-lbl">Address</div>
+          <div class="contact-val">Department of Chemical Engineering<br>Jagannath Institute of Technology and Management (JITM)<br>Centurion University of Technology and Management<br>Paralakhemundi, Gajapati, Odisha, India</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">🏠</span>
+        <div>
+          <div class="contact-lbl">Permanent Address</div>
+          <div class="contact-val">Vanduva Village &amp; Post, Veeraghattam Mandalam<br>Parvathi Puram Manyam Dist. – 532460<br>Andhra Pradesh, India</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-card fade-in">
+      <h3 style="margin-bottom:1.5rem;">Personal Information</h3>
+      <div class="contact-row">
+        <span class="contact-icon">🎂</span>
+        <div>
+          <div class="contact-lbl">Date of Birth</div>
+          <div class="contact-val">30th August 1979</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">🌐</span>
+        <div>
+          <div class="contact-lbl">Languages Known</div>
+          <div class="contact-val">English, Telugu, Hindi</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">💍</span>
+        <div>
+          <div class="contact-lbl">Marital Status</div>
+          <div class="contact-val">Married</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">🎵</span>
+        <div>
+          <div class="contact-lbl">Hobbies</div>
+          <div class="contact-val">Listening to Music · Reading Books</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">💪</span>
+        <div>
+          <div class="contact-lbl">Strengths</div>
+          <div class="contact-val">Positive Attitude · Teamwork &amp; Independent Work · Good Analytical &amp; Problem Solving Skills</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <strong>Dr. Vijay Miditana</strong> · Associate Professor &amp; Head of Department · Chemical Engineering · JITM, CUTM, Odisha, India</p>
+  <p style="margin-top:0.5rem; font-size:0.75rem;">Designed for academic excellence</p>
+</footer>
+
+<script>
+  // Publication filter
+  function filterPubs(cat, btn) {
+    document.querySelectorAll('.pub-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.pub-item').forEach(item => {
+      if (cat === 'all' || item.dataset.cat === cat) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  }
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
